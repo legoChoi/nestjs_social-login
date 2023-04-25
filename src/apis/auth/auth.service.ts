@@ -5,17 +5,21 @@ import * as authTool from 'src/common/tools/auth.tool';
 import 'dotenv/config';
 import { InjectRepository } from '@nestjs/typeorm';
 import { SmsToken } from './entities/smsToken.entity';
-import { EntityNotFoundError, Repository } from 'typeorm';
+import { Connection, EntityNotFoundError, Repository } from 'typeorm';
 import { interval } from 'rxjs';
+import { User } from '../user/entities/user.entity';
 
 @Injectable()
 export class AuthService {
   constructor(
     private readonly jwtService: JwtService, //
     private readonly userService: UserService,
+    private readonly connection: Connection,
 
     @InjectRepository(SmsToken)
     private readonly smsTokenRepository: Repository<SmsToken>,
+    @InjectRepository(User)
+    private readonly userRepository: Repository<User>,
   ) {}
 
   getAccessToken({ user }): String {
@@ -91,12 +95,34 @@ export class AuthService {
     //
     // 2. 토큰 비교 : 토큰 검증 성공 시 데이터 update
     if (data.token == token) {
-      data.isAuth = true;
-      data.isValid = false;
+      const queryRunner = await this.connection.createQueryRunner();
+      await queryRunner.connect();
 
-      await this.smsTokenRepository.save(data);
+      await queryRunner.startTransaction('READ COMMITTED');
 
-      this.userService.updetePhone({ userName, phone });
+      try {
+        const updatedData = await this.smsTokenRepository.create({
+          ...data,
+          isAuth: true,
+          isValid: false,
+        });
+
+        await queryRunner.manager.save(updatedData);
+
+        const user = await this.userRepository.findOne({ where: { userName } });
+
+        const updatedUser = await this.userRepository.create({
+          ...user,
+          phone,
+        });
+        await queryRunner.manager.save(updatedUser);
+
+        await queryRunner.commitTransaction();
+      } catch (error) {
+        await queryRunner.rollbackTransaction();
+      } finally {
+        await queryRunner.release();
+      }
     }
 
     return data;
