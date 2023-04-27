@@ -10,16 +10,19 @@ export class UserService {
     private readonly userRepository: Repository<User>, //
   ) {}
 
+  async findOneById({ userId }) {
+    return await this.userRepository.findOne({ where: { userId } });
+  }
+
   async findOneByName({ userName }) {
-    return await this.userRepository.findOne({ where: { userName } });
+    return await this.userRepository.findOne({ where: { nick: userName } });
   }
 
-  async updetePhone({ userName, phone }) {
-    const user = await this.userRepository.findOne({ where: { userName } });
-    user.phone = phone;
-    await this.userRepository.update(user.phone, user);
-  }
+  // async findOneByName({ userName }) {
+  //   return await this.userRepository.findOne({ where: { userName } });
+  // }
 
+  // 자체 회원가입 : 사용 X
   // async create({ userId, hashedPassword: pw, nick, phone, birthday, gender }) {
   //   const user = await this.userRepository.findOne({ where: { userId } });
 
@@ -35,7 +38,17 @@ export class UserService {
   //   });
   // }
 
+  //
+  //
   async social_create({ userId, userName, social_type }) {
     return await this.userRepository.save({ userId, userName, social_type });
+  }
+
+  //
+  //
+  async create({ userId, createUserInput }) {
+    return await this.userRepository.save({
+      userId,
+    });
   }
 }

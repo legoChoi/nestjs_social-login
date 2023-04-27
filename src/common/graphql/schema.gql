@@ -2,6 +2,17 @@
 # THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
 # ------------------------------------------------------
 
+type User {
+  id: String!
+  userId: String!
+  nick: String!
+  birthday: String!
+  phone: String!
+  gender: Int!
+  social_type: Int!
+  isCompleted: Boolean!
+}
+
 type SmsToken {
   id: String!
   phone: String!
@@ -22,12 +33,22 @@ type Query {
 }
 
 type Mutation {
+  requestUserJoin(userId: String!, createUserInput: CreateUserInput!): User!
+
+  """Access Token 재발급"""
+  restoreRefreshToken: String!
+  login(phone: String!, type: Float!): String!
+
   """SMS 인증 요청"""
   requestSMSAuth(phone: String!): SmsToken!
 
   """SMS 인증 검증"""
-  responseSMSAuth(phone: String!, token: String!, userName: String!): SmsToken!
+  responseSMSAuth(phone: String!, token: String!, userId: String!): SmsToken!
+  requestSocialJoin(input: String!): String!
+}
 
-  """Access Token 재발급"""
-  restoreRefreshToken: String!
+input CreateUserInput {
+  nick: String!
+  birth: String!
+  gender: Boolean!
 }

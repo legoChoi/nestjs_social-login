@@ -10,7 +10,7 @@ interface IOAuthUser {
   >;
 }
 
-@Controller()
+@Controller('/login')
 export class AuthController {
   constructor(
     private readonly authService: AuthService, //
@@ -25,21 +25,21 @@ export class AuthController {
     this.authService.loginOAuth({ req, res });
   }
 
-  @Get('/login/naver')
-  @UseGuards(AuthGuard('naver'))
-  loginNaver(
-    @Req() req: Request & IOAuthUser, //
-    @Res() res: Response,
-  ) {
-    this.authService.loginOAuth({ req, res });
-  }
+  // @Get('/naver')
+  // @UseGuards(AuthGuard('naver'))
+  // loginNaver(
+  //   @Req() req: Request & IOAuthUser, //
+  //   @Res() res: Response,
+  // ) {
+  //   this.authService.loginOAuth({ req, res });
+  // }
 
-  @Get('/login/google')
-  @UseGuards(AuthGuard('google'))
-  loginGoogle(
-    @Req() req: Request & IOAuthUser, //
-    @Res() res: Response,
-  ) {
-    this.authService.loginOAuth({ req, res });
-  }
+  // @Get('/google')
+  // @UseGuards(AuthGuard('google'))
+  // loginGoogle(
+  //   @Req() req: Request & IOAuthUser, //
+  //   @Res() res: Response,
+  // ) {
+  //   this.authService.loginOAuth({ req, res });
+  // }
 }

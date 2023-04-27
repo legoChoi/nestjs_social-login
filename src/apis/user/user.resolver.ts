@@ -6,6 +6,7 @@ import { UseGuards } from '@nestjs/common';
 import { AuthGuard } from '@nestjs/passport';
 import { GqlAuthAccessGuard } from 'src/common/auth/gql-auth.guard';
 import { CurrentUser } from 'src/common/auth/gql-user.param';
+import { CreateUserInput } from './dto/createUser.input';
 
 @Resolver()
 export class UserResolver {
@@ -42,5 +43,13 @@ export class UserResolver {
     console.log('test', currentUser);
 
     return 'test fetchUser';
+  }
+
+  @Mutation(() => User)
+  requestUserJoin(
+    @Args('userId') userId: string,
+    @Args('createUserInput') createUserInput: CreateUserInput, //
+  ) {
+    return this.userService.create({ userId, createUserInput });
   }
 }
