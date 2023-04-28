@@ -69,6 +69,8 @@ export class AuthResolver {
   requestSocialJoin(
     @Args('input') input: string, //
   ) {
-    return this.authService.requestSocialJoin({ input });
+    const item = this.authService.getFromInput({ input });
+
+    return this.authService.requestSocialJoin({ item });
   }
 }

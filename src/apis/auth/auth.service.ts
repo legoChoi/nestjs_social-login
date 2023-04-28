@@ -176,14 +176,18 @@ export class AuthService {
     return this.getAccessToken({ user });
   }
 
-  async requestSocialJoin({ input }) {
+  getFromInput({ input }) {
     //
     // 1. social_type+''+token 형식 분리해서 나누기
+    const arr: string[] = input.split(' ', 2);
+    const social_type: string = arr[0];
+    const token: string = arr[1];
+
+    return { social_type, token };
+  }
+
+  requestSocialJoin({ item }) {
     //
-    // 2. social_type에 따라 분기 설정
-    //
-    // 3. JWT 토큰 분해 (id)
-    //
-    // 4. id
+    // 2. JWT 토큰 분해 (id)
   }
 }
