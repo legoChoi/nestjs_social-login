@@ -10,12 +10,11 @@ import { AuthController } from './auth.controller';
 import { JwtGoogleStrategy } from 'src/common/auth/jwt-social-google.strategy';
 import { JwtNaverStrategy } from 'src/common/auth/jwt-social-naver.strategy';
 import { JwtKakaoStrategy } from 'src/common/auth/jwt-social-kakao.strategy';
-import { SmsToken } from './entities/smsToken.entity';
 
 @Module({
   imports: [
     JwtModule.register({}), //
-    TypeOrmModule.forFeature([User, SmsToken]),
+    TypeOrmModule.forFeature([User]),
   ],
   providers: [
     AuthResolver, //

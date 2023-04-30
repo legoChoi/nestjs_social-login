@@ -3,12 +3,10 @@ import { Args, Mutation, Query, Resolver } from '@nestjs/graphql';
 import { AuthService } from './auth.service';
 import { GqlAuthRefreshGuard } from 'src/common/auth/gql-auth.guard';
 import { CurrentUser } from 'src/common/auth/gql-user.param';
-import { SmsToken } from './entities/smsToken.entity';
 
 @Resolver()
 export class AuthResolver {
   constructor(
-    // private readonly userService: UserService, //
     private readonly authService: AuthService, //
   ) {}
 
@@ -28,35 +26,6 @@ export class AuthResolver {
     @Args('type') type: number,
   ) {
     return this.authService.login({ phone, type });
-  }
-
-  ///////////// SMS Authentication
-
-  //
-  //
-  @Mutation(() => SmsToken, { description: 'SMS 인증 요청' })
-  requestSMSAuth(
-    @Args('phone') phone: string, //
-  ) {
-    return this.authService.requestSmsAuth(phone);
-  }
-
-  //
-  //
-  @Mutation(() => SmsToken, { description: 'SMS 인증 검증' })
-  responseSMSAuth(
-    @Args('phone') phone: string, //
-    @Args('token') token: string,
-    @Args('userId') userId: string,
-  ) {
-    return this.authService.responseSmsAuth({ phone, token, userId });
-  }
-
-  @Query(() => SmsToken, { nullable: false })
-  fetchSMSAuthLast(
-    @Args('phone') phone: string, //
-  ) {
-    return this.authService.getLast({ phone });
   }
 
   /*

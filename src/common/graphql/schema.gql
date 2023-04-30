@@ -38,13 +38,13 @@ type Mutation {
   """Access Token 재발급"""
   restoreRefreshToken: String!
   login(phone: String!, type: Float!): String!
+  requestSocialJoin(input: String!): String!
 
-  """SMS 인증 요청"""
+  """SMS 인증번호 요청"""
   requestSMSAuth(phone: String!): SmsToken!
 
-  """SMS 인증 검증"""
+  """SMS 인증번호 검증"""
   responseSMSAuth(phone: String!, token: String!, userId: String!): SmsToken!
-  requestSocialJoin(input: String!): String!
 }
 
 input CreateUserInput {
