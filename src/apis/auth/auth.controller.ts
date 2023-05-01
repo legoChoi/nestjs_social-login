@@ -1,6 +1,6 @@
 import { Controller, Get, Req, Res, UseGuards } from '@nestjs/common';
 import { AuthGuard } from '@nestjs/passport';
-import { User } from '../user/entities/user.entity';
+import { User } from '../users/entities/user.entity';
 import { AuthService } from './auth.service';
 
 interface IOAuthUser {

@@ -2,7 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { Connection, Repository } from 'typeorm';
 import { SmsToken } from './entities/smsToken.entity';
 import { InjectRepository } from '@nestjs/typeorm';
-import { User } from '../user/entities/user.entity';
+import { User } from '../users/entities/user.entity';
 import * as authTool from 'src/common/tools/auth.tool';
 
 @Injectable()

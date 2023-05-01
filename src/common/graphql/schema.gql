@@ -27,13 +27,22 @@ A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date
 """
 scalar DateTime
 
+type Point {
+  id: String!
+  from: String!
+  type: Int!
+  value: Int!
+  remainPoint: Int!
+}
+
 type Query {
   fetchUser: String!
   fetchSMSAuthLast(phone: String!): SmsToken!
+  getPointHello: String!
 }
 
 type Mutation {
-  requestUserJoin(userId: String!, createUserInput: CreateUserInput!): User!
+  requestCreateUser(userId: String!, createUserInput: CreateUserInput!): User!
 
   """Access Token 재발급"""
   restoreRefreshToken: String!
@@ -45,6 +54,7 @@ type Mutation {
 
   """SMS 인증번호 검증"""
   responseSMSAuth(phone: String!, token: String!, userId: String!): SmsToken!
+  getUserPoint: Point!
 }
 
 input CreateUserInput {

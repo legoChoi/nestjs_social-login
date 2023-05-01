@@ -14,27 +14,6 @@ export class UserResolver {
     private readonly userService: UserService, //
   ) {}
 
-  // @Mutation(() => User)
-  // async createUser(
-  //   @Args('userId') userId: string,
-  //   @Args('pwd') pwd: string,
-  //   @Args('nick') nick: string,
-  //   @Args('phone') phone: string,
-  //   @Args('birthday') birthday: string,
-  //   @Args('gender') gender: Number,
-  // ) {
-  //   const hashedPassword = await bcrypt.hash(pwd, 10);
-
-  //   return this.userService.create({
-  //     userId,
-  //     hashedPassword,
-  //     nick,
-  //     phone,
-  //     birthday,
-  //     gender,
-  //   });
-  // }
-
   @UseGuards(GqlAuthAccessGuard) // 필터링
   @Query(() => String)
   fetchUser(
@@ -46,7 +25,7 @@ export class UserResolver {
   }
 
   @Mutation(() => User)
-  requestUserJoin(
+  requestCreateUser(
     @Args('userId') userId: string,
     @Args('createUserInput') createUserInput: CreateUserInput, //
   ) {
