@@ -4,11 +4,19 @@
 
 type User {
   id: String!
-  userId: String!
-  nick: String!
-  birthday: String!
+  socialId: String!
   phone: String!
+  nick: String!
   gender: Int!
+  birth: String!
+  age: String!
+  job: String!
+  company: String!
+  mbti: String!
+  profileImgUrl: String!
+  couponCnt: Float!
+  userPoint: Float!
+  isAdult: Boolean!
   social_type: Int!
   isCompleted: Boolean!
 }
@@ -42,7 +50,7 @@ type Query {
 }
 
 type Mutation {
-  requestCreateUser(userId: String!, createUserInput: CreateUserInput!): User!
+  requestUserJoin(socialId: String!, createUserInput: CreateUserInput!): User!
 
   """Access Token 재발급"""
   restoreRefreshToken: String!

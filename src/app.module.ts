@@ -3,7 +3,7 @@ import { Module } from '@nestjs/common';
 import { GraphQLModule } from '@nestjs/graphql';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { AuthModule } from './apis/auth/auth.module';
-import { UserModule } from './apis/users/user.module';
+import { UserModule } from './apis/user/user.module';
 import { ConfigModule } from '@nestjs/config';
 import { SmsModule } from './apis/sms/sms.module';
 import { PointModule } from './apis/point/point.module';

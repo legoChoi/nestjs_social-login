@@ -2,16 +2,16 @@ import { Injectable } from '@nestjs/common';
 import { Connection, Repository } from 'typeorm';
 import { SmsToken } from './entities/smsToken.entity';
 import { InjectRepository } from '@nestjs/typeorm';
-import { User } from '../users/entities/user.entity';
+import { User } from '../user/entities/user.entity';
 import * as authTool from 'src/common/tools/auth.tool';
 
 @Injectable()
 export class SmsService {
   constructor(
-    private readonly connection: Connection,
+    private readonly connection: Connection, //
 
     @InjectRepository(SmsToken)
-    private readonly smsTokenRepository: Repository<SmsToken>, //
+    private readonly smsTokenRepository: Repository<SmsToken>,
     @InjectRepository(User)
     private readonly userRepository: Repository<User>,
   ) {}
@@ -84,12 +84,13 @@ export class SmsService {
 
         await queryRunner.manager.save(updatedData);
 
-        const user = await this.userRepository.findOne({
-          where: { userId },
-        });
+        // 문제 발생??
+        // const user = await this.userRepository.findOne({
+        //   where: { socialId },
+        // });
 
         const updatedUser = await this.userRepository.create({
-          ...user,
+          // ...user,
           phone,
         });
         await queryRunner.manager.save(updatedUser);
