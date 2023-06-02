@@ -7,6 +7,7 @@ import { UserModule } from './apis/user/user.module';
 import { ConfigModule } from '@nestjs/config';
 import { SmsModule } from './apis/sms/sms.module';
 import { PointModule } from './apis/point/point.module';
+import { StoreModule } from './apis/store/store.module';
 
 @Module({
   imports: [
@@ -14,6 +15,7 @@ import { PointModule } from './apis/point/point.module';
     AuthModule,
     SmsModule,
     PointModule,
+    StoreModule,
     GraphQLModule.forRoot<ApolloDriverConfig>({
       driver: ApolloDriver,
       autoSchemaFile: 'src/common/graphql/schema.gql',
