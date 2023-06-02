@@ -48,6 +48,7 @@ type Query {
   fetchSMSAuthLast(phone: String!): SmsToken!
   getPointHello: String!
   storeQuery: String!
+  bookmarkQuery: String!
 }
 
 type Mutation {

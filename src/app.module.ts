@@ -8,6 +8,7 @@ import { ConfigModule } from '@nestjs/config';
 import { SmsModule } from './apis/sms/sms.module';
 import { PointModule } from './apis/point/point.module';
 import { StoreModule } from './apis/store/store.module';
+import { BookmarkModule } from './apis/bookmark/bookmark.module';
 
 @Module({
   imports: [
@@ -16,6 +17,7 @@ import { StoreModule } from './apis/store/store.module';
     SmsModule,
     PointModule,
     StoreModule,
+    BookmarkModule,
     GraphQLModule.forRoot<ApolloDriverConfig>({
       driver: ApolloDriver,
       autoSchemaFile: 'src/common/graphql/schema.gql',
