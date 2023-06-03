@@ -49,6 +49,8 @@ type Query {
   getPointHello: String!
   storeQuery: String!
   bookmarkQuery: String!
+  moveToBoolmark: String!
+  fetchAllBookmark: String!
 }
 
 type Mutation {
@@ -65,6 +67,8 @@ type Mutation {
   """SMS 인증번호 검증"""
   responseSMSAuth(phone: String!, token: String!, userId: String!): SmsToken!
   getUserPoint: Point!
+  createBookmark: String!
+  deleteBookmark: String!
 }
 
 input CreateUserInput {

@@ -10,7 +10,7 @@ import {
 
 @Entity()
 @ObjectType()
-export class BookmarkEntity {
+export class Bookmark {
   @PrimaryGeneratedColumn('uuid')
   id: string;
 
