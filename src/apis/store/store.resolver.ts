@@ -8,7 +8,7 @@ export class StoreResolver {
   ) {}
 
   @Query(() => String)
-  storeQuery() {
+  testStore() {
     return this.storeService.getText();
   }
 }

@@ -9,6 +9,7 @@ import { SmsModule } from './apis/sms/sms.module';
 import { PointModule } from './apis/point/point.module';
 import { StoreModule } from './apis/store/store.module';
 import { BookmarkModule } from './apis/bookmark/bookmark.module';
+import { ReviewModule } from './apis/review/review.module';
 
 @Module({
   imports: [
@@ -18,6 +19,7 @@ import { BookmarkModule } from './apis/bookmark/bookmark.module';
     PointModule,
     StoreModule,
     BookmarkModule,
+    ReviewModule,
     GraphQLModule.forRoot<ApolloDriverConfig>({
       driver: ApolloDriver,
       autoSchemaFile: 'src/common/graphql/schema.gql',

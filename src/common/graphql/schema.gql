@@ -47,10 +47,14 @@ type Query {
   fetchUser: String!
   fetchSMSAuthLast(phone: String!): SmsToken!
   getPointHello: String!
-  storeQuery: String!
-  bookmarkQuery: String!
+  testStore: String!
+
+  """북마크 가게로 이동"""
   moveToBoolmark: String!
+
+  """북마크 가게 모두 가져오기"""
   fetchAllBookmark: String!
+  testReview: String!
 }
 
 type Mutation {
@@ -67,7 +71,11 @@ type Mutation {
   """SMS 인증번호 검증"""
   responseSMSAuth(phone: String!, token: String!, userId: String!): SmsToken!
   getUserPoint: Point!
+
+  """북마크 설정"""
   createBookmark: String!
+
+  """북마크 삭제"""
   deleteBookmark: String!
 }
 
