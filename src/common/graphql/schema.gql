@@ -50,6 +50,7 @@ type Query {
   testStore: String!
   testMenuCategory: String!
   testMenu: String!
+  testMenuMainCategory: String!
 
   """북마크 가게로 이동"""
   moveToBoolmark: String!
