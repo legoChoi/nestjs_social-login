@@ -11,7 +11,7 @@ import {
 
 @Entity()
 @ObjectType()
-export class MenuCategory {
+export class MainCategory {
   @PrimaryGeneratedColumn('uuid')
   id: string;
 

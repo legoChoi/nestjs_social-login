@@ -1,13 +1,13 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { MenuCategory } from './entities/menuCategory.entity';
+import { MainCategory } from './entities/mainCategory.entity';
 import { Repository } from 'typeorm';
 
 @Injectable()
-export class MenuCategoryService {
+export class MainCategoryService {
   constructor(
-    @InjectRepository(MenuCategory)
-    private readonly menuCategoryRepository: Repository<MenuCategory>,
+    @InjectRepository(MainCategory)
+    private readonly menuCategoryRepository: Repository<MainCategory>,
   ) {}
 
   test(): string {
