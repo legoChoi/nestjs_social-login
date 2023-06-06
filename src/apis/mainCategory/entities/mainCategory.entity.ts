@@ -12,22 +12,22 @@ import {
 @Entity()
 @ObjectType()
 export class MainCategory {
-  @PrimaryGeneratedColumn('uuid')
+  @PrimaryGeneratedColumn('uuid', { comment: '주 카테고리 ID' })
   id: string;
 
   @ManyToOne(() => Store)
   store: Store;
 
-  @Column()
+  @Column({ comment: '주 카테고리 이름' })
   name: string;
 
-  @Column()
+  @Column({ comment: '주 카테고리 설명' })
   description: string;
 
-  @Column()
+  @Column({ comment: '주 카테고리 순서' })
   order: number;
 
-  @Column()
+  @Column({ comment: '주 카테고리 메뉴 수' })
   menuCount: number;
 
   @CreateDateColumn()

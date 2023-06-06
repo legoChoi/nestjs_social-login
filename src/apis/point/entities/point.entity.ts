@@ -12,7 +12,7 @@ import {
 @Entity()
 @ObjectType()
 export class Point {
-  @PrimaryGeneratedColumn('uuid', { comment: '고유 번호' })
+  @PrimaryGeneratedColumn('uuid', { comment: '포인트 ID' })
   @Field(() => String)
   id: string;
 
@@ -26,7 +26,7 @@ export class Point {
   @Column({
     type: 'tinyint',
     width: 1,
-    comment: '',
+    comment: '포인트 내역 타입',
   })
   @Field(() => Int)
   type: number;

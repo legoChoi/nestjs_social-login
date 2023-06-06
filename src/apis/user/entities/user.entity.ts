@@ -12,7 +12,7 @@ import {
 @ObjectType()
 export class User {
   // social_type + social token 내 고유 ID 값
-  @PrimaryGeneratedColumn('uuid', { comment: '고유 번호' })
+  @PrimaryGeneratedColumn('uuid', { comment: '유저 ID' })
   @Field(() => String)
   id: string;
 

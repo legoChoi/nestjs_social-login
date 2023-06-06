@@ -2,7 +2,7 @@ import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
 
 @Entity()
 export class Menu {
-  @PrimaryGeneratedColumn()
+  @PrimaryGeneratedColumn({ comment: '메뉴 ID' })
   id: string;
 
   @Column({ comment: '메뉴 이름' })

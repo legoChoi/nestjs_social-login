@@ -11,7 +11,7 @@ import {
 @Entity()
 @ObjectType()
 export class Store {
-  @PrimaryGeneratedColumn('uuid')
+  @PrimaryGeneratedColumn('uuid', { comment: '가게 ID' })
   @Field(() => String)
   id: string;
 

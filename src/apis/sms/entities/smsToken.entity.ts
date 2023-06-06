@@ -9,7 +9,7 @@ import {
 @Entity('sms_token')
 @ObjectType()
 export class SmsToken {
-  @PrimaryGeneratedColumn('increment')
+  @PrimaryGeneratedColumn('increment', { comment: 'SMS 토큰 ID' })
   @Field(() => String)
   id: string;
 
