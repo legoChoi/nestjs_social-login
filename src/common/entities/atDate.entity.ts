@@ -1,14 +1,6 @@
-import { ObjectType } from '@nestjs/graphql';
-import {
-  CreateDateColumn,
-  DeleteDateColumn,
-  Entity,
-  UpdateDateColumn,
-} from 'typeorm';
+import { CreateDateColumn, DeleteDateColumn, UpdateDateColumn } from 'typeorm';
 
-@Entity()
-@ObjectType()
-export class DateEntity {
+export class AtDate {
   @CreateDateColumn({ comment: '생성일' })
   createdAt: string;
   @UpdateDateColumn({ comment: '수정일' })

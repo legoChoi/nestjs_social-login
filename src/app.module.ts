@@ -10,6 +10,7 @@ import { PointModule } from './apis/point/point.module';
 import { StoreModule } from './apis/store/store.module';
 import { BookmarkModule } from './apis/bookmark/bookmark.module';
 import { ReviewModule } from './apis/review/review.module';
+import { MenuCategoryModule } from './apis/menuCategory/menuCategory.module';
 
 @Module({
   imports: [
@@ -18,6 +19,7 @@ import { ReviewModule } from './apis/review/review.module';
     SmsModule,
     PointModule,
     StoreModule,
+    MenuCategoryModule,
     BookmarkModule,
     ReviewModule,
     GraphQLModule.forRoot<ApolloDriverConfig>({

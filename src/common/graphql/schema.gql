@@ -48,6 +48,7 @@ type Query {
   fetchSMSAuthLast(phone: String!): SmsToken!
   getPointHello: String!
   testStore: String!
+  testMenuCategory: String!
 
   """북마크 가게로 이동"""
   moveToBoolmark: String!

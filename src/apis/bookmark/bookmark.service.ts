@@ -1,5 +1,5 @@
 import { Injectable } from '@nestjs/common';
-import { Bookmark } from './entites/bookmark.entity';
+import { Bookmark } from './entities/bookmark.entity';
 import { Repository } from 'typeorm';
 import { InjectRepository } from '@nestjs/typeorm';
 

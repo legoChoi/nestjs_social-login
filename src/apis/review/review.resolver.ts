@@ -11,4 +11,10 @@ export class ReviewResolver {
   testReview(): string {
     return this.reviewService.test();
   }
+
+  //
+  create() {}
+
+  //
+  delete() {}
 }

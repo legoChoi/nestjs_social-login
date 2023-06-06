@@ -2,7 +2,7 @@ import { Module } from '@nestjs/common';
 import { BookmarkResolver } from './bookmark.resolver';
 import { BookmarkService } from './bookmark.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { Bookmark } from './entites/bookmark.entity';
+import { Bookmark } from './entities/bookmark.entity';
 
 @Module({
   imports: [TypeOrmModule.forFeature([Bookmark])], //
