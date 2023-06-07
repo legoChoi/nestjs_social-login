@@ -10,7 +10,9 @@ export class MainCategoryService {
     private readonly menuCategoryRepository: Repository<MainCategory>,
   ) {}
 
-  test(): string {
-    return 'menu category test';
+  async createMainCategory({ name, storeId }) {
+    await this.menuCategoryRepository.save({ name, store: { id: storeId } });
+
+    return 'name';
   }
 }

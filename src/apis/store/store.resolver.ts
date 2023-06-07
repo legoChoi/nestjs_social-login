@@ -1,4 +1,4 @@
-import { Query, Resolver } from '@nestjs/graphql';
+import { Args, Mutation, Query, Resolver } from '@nestjs/graphql';
 import { StoreService } from './store.service';
 
 @Resolver()
@@ -7,8 +7,10 @@ export class StoreResolver {
     private readonly storeService: StoreService, //
   ) {}
 
-  @Query(() => String)
-  testStore() {
-    return this.storeService.getText();
+  @Mutation(() => String)
+  createStore(
+    @Args('name') name: string, //
+  ) {
+    return this.storeService.createStore({ name });
   }
 }

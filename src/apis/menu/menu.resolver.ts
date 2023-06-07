@@ -1,4 +1,4 @@
-import { Query, Resolver } from '@nestjs/graphql';
+import { Args, Mutation, Query, Resolver } from '@nestjs/graphql';
 import { MenuService } from './menu.service';
 
 @Resolver()
@@ -7,8 +7,11 @@ export class MenuResolver {
     private readonly menuService: MenuService, //
   ) {}
 
-  @Query(() => String)
-  testMenu(): string {
-    return this.menuService.test();
+  @Mutation(() => String)
+  createMenu(
+    @Args('name') name: string, //
+    @Args('storeId') storeId: string,
+  ) {
+    return this.menuService.createMenu({ name, storeId });
   }
 }

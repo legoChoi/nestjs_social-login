@@ -20,6 +20,6 @@ export class Bookmark {
   @ManyToOne(() => User)
   user: User;
 
-  @CreateDateColumn()
-  createdAt: Date;
+  // @CreateDateColumn()
+  // createdAt: Date;
 }

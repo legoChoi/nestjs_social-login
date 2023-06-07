@@ -1,12 +1,15 @@
-import { Query, Resolver } from '@nestjs/graphql';
+import { Args, Mutation, Query, Resolver } from '@nestjs/graphql';
 import { MainCategoryService } from './mainCategory.service';
 
 @Resolver()
 export class MainCategoryResolver {
   constructor(private readonly menuCategoryService: MainCategoryService) {}
 
-  @Query(() => String)
-  testMenuCategory(): string {
-    return this.menuCategoryService.test();
+  @Mutation(() => String)
+  createMainCategory(
+    @Args('name') name: string,
+    @Args('storeId') storeId: string,
+  ) {
+    return this.menuCategoryService.createMainCategory({ name, storeId });
   }
 }

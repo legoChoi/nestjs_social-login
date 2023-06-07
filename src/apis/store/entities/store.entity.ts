@@ -15,76 +15,76 @@ export class Store {
   @Field(() => String)
   id: string;
 
-  @Column({ comment: '' })
-  @Field(() => String)
-  storePW: string;
+  // @Column({ comment: '' })
+  // @Field(() => String)
+  // storePW: string;
 
   @Column({})
   @Field(() => String)
-  storeName: string;
+  name: string;
 
-  @Column({})
-  @Field(() => String)
-  owner: string;
+  // @Column({})
+  // @Field(() => String)
+  // owner: string;
 
-  @Column({})
-  @Field(() => String)
-  registrationNo: string;
+  // @Column({})
+  // @Field(() => String)
+  // registrationNo: string;
 
-  @Column({})
-  @Field(() => String)
-  storeCall: string;
+  // @Column({})
+  // @Field(() => String)
+  // storeCall: string;
 
-  @Column({})
-  @Field(() => String)
-  ownerCall: string;
+  // @Column({})
+  // @Field(() => String)
+  // ownerCall: string;
 
-  @Column({})
-  @Field(() => String)
-  address: string;
+  // @Column({})
+  // @Field(() => String)
+  // address: string;
 
-  @Column({})
-  @Field(() => String)
-  sns: string;
+  // @Column({})
+  // @Field(() => String)
+  // sns: string;
 
-  @Column({})
-  @Field(() => String)
-  operationTime: string;
+  // @Column({})
+  // @Field(() => String)
+  // operationTime: string;
 
-  @Column({})
-  @Field(() => String)
-  dayOff: string;
+  // @Column({})
+  // @Field(() => String)
+  // dayOff: string;
 
-  @Column({})
-  @Field(() => String)
-  description: string;
+  // @Column({})
+  // @Field(() => String)
+  // description: string;
 
-  @Column({})
-  @Field(() => String)
-  notice: string;
+  // @Column({})
+  // @Field(() => String)
+  // notice: string;
 
-  @Column({})
-  @Field(() => String)
-  service: string;
+  // @Column({})
+  // @Field(() => String)
+  // service: string;
 
-  @Column({ comment: '지연시간 1' })
-  @Field(() => Number)
-  shortDelayTime: number;
+  // @Column({ comment: '지연시간 1' })
+  // @Field(() => Number)
+  // shortDelayTime: number;
 
-  @Column({ comment: '지연시간 2' })
-  @Field(() => Number)
-  mediumDelayTime: number;
+  // @Column({ comment: '지연시간 2' })
+  // @Field(() => Number)
+  // mediumDelayTime: number;
 
-  @Column({ comment: '지연시간 3' })
-  @Field(() => Number)
-  longDelayTime: number;
+  // @Column({ comment: '지연시간 3' })
+  // @Field(() => Number)
+  // longDelayTime: number;
 
-  @CreateDateColumn()
-  createdAt: Date;
+  // @CreateDateColumn()
+  // createdAt: Date;
 
-  @UpdateDateColumn()
-  updatedAt: Date;
+  // @UpdateDateColumn()
+  // updatedAt: Date;
 
-  @DeleteDateColumn()
-  deletedAt: Date;
+  // @DeleteDateColumn()
+  // deletedAt: Date;
 }
