@@ -43,10 +43,17 @@ type Point {
   remainPoint: Int!
 }
 
+type Store {
+  id: String!
+  name: String!
+}
+
 type Query {
   fetchUser: String!
   fetchSMSAuthLast(phone: String!): SmsToken!
   getPointHello: String!
+  fetchOneStore(id: String!): Store!
+  fetchAllStore: [Store!]!
 
   """북마크 가게로 이동"""
   moveToBoolmark: String!
