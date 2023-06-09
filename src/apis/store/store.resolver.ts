@@ -12,18 +12,18 @@ export class StoreResolver {
   createStore(
     @Args('name') name: string, //
   ) {
-    return this.storeService.createStore({ name });
+    return this.storeService.create({ name });
   }
 
   @Query(() => Store)
   fetchOneStore(
     @Args('id') id: string, //
   ): Promise<Store> {
-    return this.storeService.fetchOneStore({ id });
+    return this.storeService.fetchOne({ id });
   }
 
   @Query(() => [Store])
   fetchAllStore(): Promise<Store[]> {
-    return this.storeService.fetchAllStore();
+    return this.storeService.fetchAll();
   }
 }

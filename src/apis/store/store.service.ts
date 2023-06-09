@@ -10,17 +10,17 @@ export class StoreService {
     private readonly storeRepository: Repository<Store>,
   ) {}
 
-  async createStore({ name }) {
+  async create({ name }) {
     const store = await this.storeRepository.save({ name });
     return name;
   }
 
-  async fetchOneStore({ id }): Promise<Store> {
+  async fetchOne({ id }): Promise<Store> {
     const store = this.storeRepository.findOne({ where: { id } });
     return store;
   }
 
-  async fetchAllStore(): Promise<Store[]> {
+  async fetchAll(): Promise<Store[]> {
     const store = this.storeRepository.find();
     return store;
   }
