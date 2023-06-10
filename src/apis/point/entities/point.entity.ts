@@ -21,7 +21,7 @@ export class Point {
 
   @Column({ comment: '적립/사용 가게' })
   @Field(() => String)
-  from: string;
+  by: string;
 
   @Column({
     type: 'tinyint',
@@ -35,7 +35,7 @@ export class Point {
   @Field(() => Int)
   value: number;
 
-  @Column({ comment: '남은 포인트 총액' })
+  @Column({ comment: '잔여 포인트' })
   @Field(() => Int)
   remainPoint: number;
 

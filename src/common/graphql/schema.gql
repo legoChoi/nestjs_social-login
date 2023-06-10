@@ -37,7 +37,7 @@ scalar DateTime
 
 type Point {
   id: String!
-  from: String!
+  by: String!
   type: Int!
   value: Int!
   remainPoint: Int!
@@ -51,7 +51,9 @@ type Store {
 type Query {
   fetchUser: String!
   fetchSMSAuthLast(phone: String!): SmsToken!
-  getPointHello: String!
+
+  """[포인트 내역] 포인트 내역 리스트 가져오기"""
+  fetchAllPoint(userId: String!): [Point!]!
   fetchOneStore(id: String!): Store!
   fetchAllStore: [Store!]!
 
@@ -76,7 +78,6 @@ type Mutation {
 
   """SMS 인증번호 검증"""
   responseSMSAuth(phone: String!, token: String!, userId: String!): SmsToken!
-  getUserPoint: Point!
   createStore(name: String!): String!
   createMainCategory(name: String!, storeId: String!): String!
   createMenu(name: String!, storeId: String!): String!
