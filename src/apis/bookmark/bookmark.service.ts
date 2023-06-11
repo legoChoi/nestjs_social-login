@@ -10,10 +10,6 @@ export class BookmarkService {
     private readonly bookmarkRepository: Repository<Bookmark>,
   ) {}
 
-  testQuery() {
-    return 'test bookmark';
-  }
-
   //
   create() {
     return 'create bookmark';

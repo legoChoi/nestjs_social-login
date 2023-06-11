@@ -10,7 +10,27 @@ export class ReviewService {
     private readonly reviewRepository: Repository<Review>,
   ) {}
 
-  test(): string {
-    return 'review test';
+  //
+  async fetchAllByStoreId({ storeId }): Promise<Review[]> {
+    const review = await this.reviewRepository.find({
+      where: { store: storeId },
+    });
+
+    return review;
   }
+
+  //
+  async fetchAllByUserId({ userId }): Promise<Review[]> {
+    const review = await this.reviewRepository.find({
+      where: { user: userId },
+    });
+
+    return review;
+  }
+
+  //
+  async create() {}
+
+  //
+  async delete() {}
 }

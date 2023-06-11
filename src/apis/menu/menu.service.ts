@@ -10,11 +10,11 @@ export class MenuService {
     private readonly menuRepository: Repository<Menu>, //
   ) {}
 
-  async createMenu({ name, storeId }) {
+  async createMenu({ name, storeId }): Promise<Menu> {
     const menu = await this.menuRepository.save({
       name,
       store: { id: storeId },
     });
-    return 'name';
+    return menu;
   }
 }

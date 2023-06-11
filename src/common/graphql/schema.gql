@@ -62,7 +62,7 @@ type Query {
 
   """북마크 가게 모두 가져오기"""
   fetchAllBookmark: String!
-  testReview: String!
+  fetchAllReviewByStoreId(storeId: String!): String!
 }
 
 type Mutation {
