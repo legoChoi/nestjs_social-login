@@ -1,14 +1,18 @@
-import { Mutation, Query, Resolver } from '@nestjs/graphql';
+import { Args, Mutation, Query, Resolver } from '@nestjs/graphql';
 import { BookmarkService } from './bookmark.service';
+import { Bookmark } from './entities/bookmark.entity';
 
 @Resolver()
 export class BookmarkResolver {
   constructor(private readonly bookmarkService: BookmarkService) {}
 
   // 북마크 설정
-  @Mutation(() => String, { description: '북마크 설정' })
-  createBookmark(): string {
-    return this.bookmarkService.create();
+  @Mutation(() => Bookmark, { description: '북마크 설정' })
+  createBookmark(
+    @Args('userId') userId: string,
+    @Args('storeId') storeId: string,
+  ): Promise<Bookmark> {
+    return this.bookmarkService.create({ userId, storeId });
   }
 
   // 북마크 삭제
@@ -24,8 +28,10 @@ export class BookmarkResolver {
   }
 
   // 모든 북마크 가게 불러오기
-  @Query(() => String, { description: '북마크 가게 모두 가져오기' })
-  fetchAllBookmark() {
-    return this.bookmarkService.fetchAll();
+  @Query(() => [Bookmark], { description: '북마크 가게 모두 가져오기' })
+  fetchAllBookmark(
+    @Args('userId') userId: string, //
+  ): Promise<Bookmark[]> {
+    return this.bookmarkService.fetchAll({ userId });
   }
 }

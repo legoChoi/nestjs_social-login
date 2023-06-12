@@ -11,8 +11,13 @@ export class BookmarkService {
   ) {}
 
   //
-  create() {
-    return 'create bookmark';
+  async create({ userId, storeId }): Promise<Bookmark> {
+    const bookmark = await this.bookmarkRepository.save({
+      user: { id: userId },
+      store: { id: storeId },
+    });
+
+    return bookmark;
   }
 
   //
@@ -26,7 +31,11 @@ export class BookmarkService {
   }
 
   //
-  fetchAll() {
-    return 'fetch all bookmark';
+  async fetchAll({ userId }): Promise<Bookmark[]> {
+    const bookmark = await this.bookmarkRepository.find({
+      where: { user: userId },
+    });
+
+    return bookmark;
   }
 }
