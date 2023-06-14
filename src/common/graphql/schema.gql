@@ -37,6 +37,7 @@ scalar DateTime
 
 type Point {
   id: String!
+  user: User!
   by: String!
   type: Int!
   value: Int!
@@ -48,6 +49,35 @@ type Store {
   name: String!
 }
 
+type Bookmark {
+  id: String!
+  store: Store!
+  user: User!
+}
+
+type MainCategory {
+  id: String!
+  store: Store!
+  name: String!
+}
+
+type Menu {
+  id: String!
+  store: Store!
+  name: String!
+}
+
+type MenuMainCategory {
+  id: String!
+  menu: Menu!
+  mainCategory: MainCategory!
+}
+
+type Tag {
+  id: String!
+  name: String!
+}
+
 type Query {
   fetchUser: String!
   fetchSMSAuthLast(phone: String!): SmsToken!
@@ -55,14 +85,13 @@ type Query {
   """[포인트 내역] 포인트 내역 리스트 가져오기"""
   fetchAllPoint(userId: String!): [Point!]!
   fetchOneStore(id: String!): Store!
-  fetchAllStore: [Store!]!
+  fetchAllStoreList: [Store!]!
 
   """북마크 가게로 이동"""
   moveToBoolmark: String!
 
   """북마크 가게 모두 가져오기"""
-  fetchAllBookmark: String!
-  fetchAllReviewByStoreId(storeId: String!): String!
+  fetchAllBookmark(userId: String!): [Bookmark!]!
 }
 
 type Mutation {
@@ -80,14 +109,16 @@ type Mutation {
   responseSMSAuth(phone: String!, token: String!, userId: String!): SmsToken!
   createStore(name: String!): String!
   createMainCategory(name: String!, storeId: String!): String!
-  createMenu(name: String!, storeId: String!): String!
-  createMenuMainCategory(menuId: String!, mainCategoryId: String!): String!
+  createMenuMainCategory(menuId: String!, mainCategoryId: String!): MenuMainCategory!
 
   """북마크 설정"""
-  createBookmark: String!
+  createBookmark(userId: String!, storeId: String!): Bookmark!
 
   """북마크 삭제"""
   deleteBookmark: String!
+
+  """[TEST] 태그 생성"""
+  createTag(name: String!): Tag!
 }
 
 input CreateUserInput {

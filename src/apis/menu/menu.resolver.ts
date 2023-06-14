@@ -8,11 +8,11 @@ export class MenuResolver {
     private readonly menuService: MenuService, //
   ) {}
 
-  @Mutation(() => Menu)
-  createMenu(
-    @Args('name') name: string, //
-    @Args('storeId') storeId: string,
-  ): Promise<Menu> {
-    return this.menuService.createMenu({ name, storeId });
-  }
+  // @Mutation(() => Menu)
+  // createMenu(
+  //   @Args('name') name: string, //
+  //   @Args('storeId') storeId: string,
+  // ): Promise<Menu> {
+  //   return this.menuService.createMenu({ name, storeId });
+  // }
 }

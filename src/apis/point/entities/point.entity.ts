@@ -17,6 +17,7 @@ export class Point {
   id: string;
 
   @ManyToOne(() => User)
+  @Field(() => User)
   user: User;
 
   @Column({ comment: '적립/사용 가게' })

@@ -13,6 +13,7 @@ import { ReviewModule } from './apis/review/review.module';
 import { MainCategoryModule } from './apis/mainCategory/mainCategory.module';
 import { MenuModule } from './apis/menu/menu.module';
 import { MenuMainCategoryModule } from './apis/menuMainCategory/menuMainCategory.module';
+import { TagModule } from './apis/tag/tag.module';
 
 @Module({
   imports: [
@@ -26,6 +27,7 @@ import { MenuMainCategoryModule } from './apis/menuMainCategory/menuMainCategory
     MenuMainCategoryModule,
     BookmarkModule,
     ReviewModule,
+    TagModule,
     GraphQLModule.forRoot<ApolloDriverConfig>({
       driver: ApolloDriver,
       autoSchemaFile: 'src/common/graphql/schema.gql',

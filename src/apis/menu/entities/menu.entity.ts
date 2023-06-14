@@ -1,15 +1,20 @@
+import { Field, ObjectType } from '@nestjs/graphql';
 import { Store } from 'src/apis/store/entities/store.entity';
 import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
 
 @Entity()
+@ObjectType()
 export class Menu {
   @PrimaryGeneratedColumn({ comment: '메뉴 ID' })
+  @Field(() => String)
   id: string;
 
   @ManyToOne(() => Store)
+  @Field(() => Store)
   store: Store;
 
   @Column({ comment: '메뉴 이름' })
+  @Field(() => String)
   name: string;
 
   // @Column({ comment: '메뉴 설명' })
