@@ -22,8 +22,10 @@ export class StoreResolver {
     return this.storeService.fetchOne({ id });
   }
 
+  //
+  // 매장 리스트 화면
   @Query(() => [Store])
-  fetchAllStore(): Promise<Store[]> {
+  fetchAllStoreList(): Promise<Store[]> {
     return this.storeService.fetchAll();
   }
 }

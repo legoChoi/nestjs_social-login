@@ -11,7 +11,7 @@ import {
 @Entity()
 @ObjectType()
 export class Bookmark {
-  @PrimaryGeneratedColumn('uuid', { comment: '북마크 ID' })
+  @PrimaryGeneratedColumn('increment', { comment: '북마크 ID' })
   id: string;
 
   @ManyToOne(() => Store)
