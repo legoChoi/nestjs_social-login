@@ -15,23 +15,17 @@ export class StoreService {
     return name;
   }
 
-  async fetchOne({ id }): Promise<Store> {
-    const store = this.storeRepository.findOne({ where: { id } });
-    return store;
-  }
-
+  // 매장 상세화면
   async fetchAll(): Promise<Store[]> {
-    const store = this.storeRepository.find();
-    return store;
+    return await this.storeRepository.find({
+      relations: ['storeTag', 'storeTag.tag'],
+    });
   }
 
-  async fetchWithAllMenu({ storeId }): Promise<Store> {
-    const store = await this.storeRepository.findOne({
+  async fetchWithMenusAndTags({ storeId }): Promise<Store> {
+    return await this.storeRepository.findOne({
       where: { id: storeId },
-      relations: ['menu', 'storeTag'],
+      relations: ['menu', 'storeTag', 'storeTag.tag'],
     });
-    console.log(store);
-
-    return store;
   }
 }

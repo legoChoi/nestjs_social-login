@@ -26,11 +26,13 @@ export class Store {
   @Field(() => String)
   name: string;
 
-  @OneToMany(() => StoreTag, (storeTag) => storeTag.store)
-  storeTag: StoreTag[];
-
   @OneToMany(() => Menu, (menu) => menu.store)
+  @Field(() => [Menu])
   menu: Menu[];
+
+  @OneToMany(() => StoreTag, (storeTag) => storeTag.store)
+  @Field(() => [StoreTag])
+  storeTag: StoreTag[];
 
   // @Column({})
   // @Field(() => String)

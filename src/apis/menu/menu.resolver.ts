@@ -8,7 +8,10 @@ export class MenuResolver {
     private readonly menuService: MenuService, //
   ) {}
 
-  @Mutation(() => Menu)
+  @Mutation(
+    () => Menu, //
+    { description: '[TEST] 메뉴 생성' },
+  )
   createMenu(
     @Args('name') name: string, //
     @Args('storeId') storeId: string,
@@ -16,7 +19,12 @@ export class MenuResolver {
     return this.menuService.createMenu({ name, storeId });
   }
 
-  @Query(() => [Menu])
+  @Query(
+    () => [Menu], //
+    {
+      description: '[매장 상세 - 메뉴 탭] 메뉴 리스트 가져오기',
+    },
+  )
   fetchAllMenu(
     @Args('storeId') storeId: string, //
   ): Promise<Menu[]> {
