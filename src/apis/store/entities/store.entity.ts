@@ -1,5 +1,6 @@
 import { Field, ObjectType } from '@nestjs/graphql';
 import { Menu } from 'src/apis/menu/entities/menu.entity';
+import { StoreImage } from 'src/apis/storeImage/entities/storeImage.entity';
 import { StoreTag } from 'src/apis/storeTag/entities/storeTag.entity';
 import {
   Column,
@@ -33,6 +34,10 @@ export class Store {
   @OneToMany(() => StoreTag, (storeTag) => storeTag.store)
   @Field(() => [StoreTag])
   storeTag: StoreTag[];
+
+  @OneToMany(() => StoreImage, (storeImage) => storeImage.store)
+  @Field(() => [StoreImage])
+  storeImage: StoreImage[];
 
   // @Column({})
   // @Field(() => String)
