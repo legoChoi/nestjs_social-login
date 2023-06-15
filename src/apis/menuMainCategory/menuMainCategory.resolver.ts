@@ -9,11 +9,11 @@ export class MenuMainCategoryResolver {
   ) {}
 
   @Mutation(() => MenuMainCategory)
-  createMenuMainCategory(
+  connectMenuMainCategory(
     @Args('menuId') menuId: string,
     @Args('mainCategoryId') mainCategoryId: string,
   ): Promise<MenuMainCategory> {
-    return this.menuMainCategoryService.createMenuMainCategory({
+    return this.menuMainCategoryService.connetMenuMainCategory({
       menuId,
       mainCategoryId,
     });
