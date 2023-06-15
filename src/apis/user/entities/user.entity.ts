@@ -1,9 +1,11 @@
 import { Field, Int, ObjectType } from '@nestjs/graphql';
+import { Point } from 'src/apis/point/entities/point.entity';
 import {
   Column,
   CreateDateColumn,
   DeleteDateColumn,
   Entity,
+  OneToMany,
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from 'typeorm';
@@ -15,6 +17,10 @@ export class User {
   @PrimaryGeneratedColumn('uuid', { comment: '유저 ID' })
   @Field(() => String)
   id: string;
+
+  @OneToMany(() => Point, (point) => point.user)
+  @Field(() => [Point])
+  point: Point[];
 
   // 없애도 될 것 같다.
   @Column({ comment: '회원 ID' })

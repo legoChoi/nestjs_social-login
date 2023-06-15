@@ -12,7 +12,7 @@ import {
 @Entity()
 @ObjectType()
 export class Point {
-  @PrimaryGeneratedColumn('uuid', { comment: '포인트 ID' })
+  @PrimaryGeneratedColumn('increment', { comment: '포인트 ID' })
   @Field(() => String)
   id: string;
 
@@ -43,6 +43,7 @@ export class Point {
   @CreateDateColumn({ comment: '생성일' })
   createdAt: Date;
 
+  // 필요한가?
   @DeleteDateColumn({ comment: '삭제일' })
   deletedAt: Date;
 }
