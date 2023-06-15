@@ -16,11 +16,11 @@ export class StoreTag {
   @Field(() => String)
   id: string;
 
-  @ManyToOne(() => Store, (store) => store.id)
+  @ManyToOne(() => Store, (store) => store.storeTag)
   @Field(() => Store)
-  store: string;
+  store: Store;
 
-  @ManyToOne(() => Tag, (tag) => tag.id)
+  @ManyToOne(() => Tag, (tag) => tag.storeTag)
   @Field(() => Tag)
-  tag: string;
+  tag: Tag;
 }

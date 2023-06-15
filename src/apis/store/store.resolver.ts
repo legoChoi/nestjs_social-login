@@ -33,7 +33,7 @@ export class StoreResolver {
   @Query(() => Store)
   fetchStoreWithAllMenu(
     @Args('storeId') storeId: string, //
-  ): Promise<Store[]> {
+  ): Promise<Store> {
     return this.storeService.fetchWithAllMenu({ storeId });
   }
 }

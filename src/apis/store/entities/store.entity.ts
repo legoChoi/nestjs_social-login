@@ -26,10 +26,10 @@ export class Store {
   @Field(() => String)
   name: string;
 
-  @OneToMany(() => StoreTag, (storeTag) => storeTag.id)
+  @OneToMany(() => StoreTag, (storeTag) => storeTag.store)
   storeTag: StoreTag[];
 
-  @OneToMany(() => Menu, (menu) => menu.id)
+  @OneToMany(() => Menu, (menu) => menu.store)
   menu: Menu[];
 
   // @Column({})

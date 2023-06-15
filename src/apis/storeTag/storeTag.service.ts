@@ -16,6 +16,9 @@ export class StoreTagService {
   ): Promise<StoreTag> {
     const { storeId, tagId } = createStoreTagInput;
 
-    return await this.storeTagRepository.save({});
+    return await this.storeTagRepository.save({
+      store: { id: storeId },
+      tag: { id: tagId },
+    });
   }
 }

@@ -19,7 +19,7 @@ export class Tag {
   @Field(() => String)
   name: string;
 
-  @OneToMany(() => StoreTag, (storeTag) => storeTag.id)
+  @OneToMany(() => StoreTag, (storeTag) => storeTag.tag)
   storeTag: StoreTag[];
 
   @CreateDateColumn()
