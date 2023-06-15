@@ -1,9 +1,12 @@
 import { Field, ObjectType } from '@nestjs/graphql';
+import { Menu } from 'src/apis/menu/entities/menu.entity';
+import { StoreTag } from 'src/apis/storeTag/entities/storeTag.entity';
 import {
   Column,
   CreateDateColumn,
   DeleteDateColumn,
   Entity,
+  OneToMany,
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from 'typeorm';
@@ -22,6 +25,12 @@ export class Store {
   @Column({})
   @Field(() => String)
   name: string;
+
+  @OneToMany(() => StoreTag, (storeTag) => storeTag.id)
+  storeTag: StoreTag[];
+
+  @OneToMany(() => Menu, (menu) => menu.id)
+  menu: Menu[];
 
   // @Column({})
   // @Field(() => String)

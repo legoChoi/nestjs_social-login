@@ -1,16 +1,21 @@
 import { Injectable } from '@nestjs/common';
 import { StoreTag } from './entities/storeTag.entity';
 import { Repository } from 'typeorm';
+import { InjectRepository } from '@nestjs/typeorm';
+import { IStoreTagServiceCreate } from './interfaces/storeTag-service.interface';
 
 @Injectable()
 export class StoreTagService {
-  constructor(private readonly storeTagRepository: Repository<StoreTag>) {}
+  constructor(
+    @InjectRepository(StoreTag)
+    private readonly storeTagRepository: Repository<StoreTag>, //
+  ) {}
 
-  // async connect({ storeId, tagId }): Promise<StoreTag> {
-  //   return await this.storeTagRepository.save({});
-  // }
+  async connect(
+    { createStoreTagInput }: IStoreTagServiceCreate, //
+  ): Promise<StoreTag> {
+    const { storeId, tagId } = createStoreTagInput;
 
-  fetchOne() {}
-
-  fetchAll() {}
+    return await this.storeTagRepository.save({});
+  }
 }

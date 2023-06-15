@@ -28,4 +28,12 @@ export class StoreResolver {
   fetchAllStoreList(): Promise<Store[]> {
     return this.storeService.fetchAll();
   }
+
+  //
+  @Query(() => Store)
+  fetchStoreWithAllMenu(
+    @Args('storeId') storeId: string, //
+  ): Promise<Store[]> {
+    return this.storeService.fetchWithAllMenu({ storeId });
+  }
 }

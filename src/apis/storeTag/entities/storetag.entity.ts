@@ -1,7 +1,13 @@
 import { Field, ObjectType } from '@nestjs/graphql';
 import { Store } from 'src/apis/store/entities/store.entity';
 import { Tag } from 'src/apis/tag/entities/tag.entity';
-import { Entity, ManyToOne, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
+import {
+  Column,
+  Entity,
+  ManyToOne,
+  OneToMany,
+  PrimaryGeneratedColumn,
+} from 'typeorm';
 
 @Entity()
 @ObjectType()
@@ -10,11 +16,11 @@ export class StoreTag {
   @Field(() => String)
   id: string;
 
-  @ManyToOne(() => Store)
+  @ManyToOne(() => Store, (store) => store.id)
   @Field(() => Store)
   store: string;
 
-  @ManyToOne(() => Tag)
+  @ManyToOne(() => Tag, (tag) => tag.id)
   @Field(() => Tag)
   tag: string;
 }

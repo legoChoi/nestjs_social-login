@@ -1,6 +1,7 @@
 import { Args, Mutation, Query, Resolver } from '@nestjs/graphql';
 import { StoreTagService } from './storeTag.service';
 import { StoreTag } from './entities/storeTag.entity';
+import { CreateStoreTagInput } from './dto/create-storeTag.input';
 
 @Resolver()
 export class StoreTagResolver {
@@ -8,13 +9,10 @@ export class StoreTagResolver {
     private readonly storeTagService: StoreTagService, //
   ) {}
 
-  // @Mutation(() => StoreTag, { description: '가게와 태그 연결' })
-  // connectTagWithStore(
-  //   @Args('storeId') storeId: string, //
-  //   @Args('tagId') tagId: string,
-  // ): Promise<StoreTag> {
-  //   return this.storeTagService.connect({ storeId, tagId });
-  // }
-
-  fetchAllStoreTag() {}
+  @Mutation(() => StoreTag, { description: '가게와 태그 연결' })
+  connectTagWithStore(
+    @Args('createStoreTagInput') createStoreTagInput: CreateStoreTagInput, //
+  ): Promise<StoreTag> {
+    return this.storeTagService.connect({ createStoreTagInput });
+  }
 }

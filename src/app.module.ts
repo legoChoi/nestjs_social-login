@@ -14,6 +14,7 @@ import { MainCategoryModule } from './apis/mainCategory/mainCategory.module';
 import { MenuModule } from './apis/menu/menu.module';
 import { MenuMainCategoryModule } from './apis/menuMainCategory/menuMainCategory.module';
 import { TagModule } from './apis/tag/tag.module';
+import { StoreTagModule } from './apis/storeTag/storeTag.module';
 
 @Module({
   imports: [
@@ -28,6 +29,7 @@ import { TagModule } from './apis/tag/tag.module';
     BookmarkModule,
     ReviewModule,
     TagModule,
+    StoreTagModule,
     GraphQLModule.forRoot<ApolloDriverConfig>({
       driver: ApolloDriver,
       autoSchemaFile: 'src/common/graphql/schema.gql',

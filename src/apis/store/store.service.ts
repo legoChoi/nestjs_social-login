@@ -24,4 +24,10 @@ export class StoreService {
     const store = this.storeRepository.find();
     return store;
   }
+
+  async fetchWithAllMenu({ storeId }): Promise<Store[]> {
+    return await this.storeRepository.find({
+      relations: ['menu'],
+    });
+  }
 }

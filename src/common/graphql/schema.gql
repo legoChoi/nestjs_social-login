@@ -44,6 +44,23 @@ type Point {
   remainPoint: Int!
 }
 
+type Menu {
+  id: String!
+  store: Store!
+  name: String!
+}
+
+type Tag {
+  id: String!
+  name: String!
+}
+
+type StoreTag {
+  id: String!
+  store: Store!
+  tag: Tag!
+}
+
 type Store {
   id: String!
   name: String!
@@ -61,21 +78,10 @@ type MainCategory {
   name: String!
 }
 
-type Menu {
-  id: String!
-  store: Store!
-  name: String!
-}
-
 type MenuMainCategory {
   id: String!
   menu: Menu!
   mainCategory: MainCategory!
-}
-
-type Tag {
-  id: String!
-  name: String!
 }
 
 type Query {
@@ -86,6 +92,8 @@ type Query {
   fetchAllPoint(userId: String!): [Point!]!
   fetchOneStore(id: String!): Store!
   fetchAllStoreList: [Store!]!
+  fetchStoreWithAllMenu(storeId: String!): Store!
+  fetchAllMenu(storeId: String!): [Menu!]!
 
   """북마크 가게로 이동"""
   moveToBoolmark: String!
@@ -109,6 +117,7 @@ type Mutation {
   responseSMSAuth(phone: String!, token: String!, userId: String!): SmsToken!
   createStore(name: String!): String!
   createMainCategory(name: String!, storeId: String!): String!
+  createMenu(name: String!, storeId: String!): Menu!
   createMenuMainCategory(menuId: String!, mainCategoryId: String!): MenuMainCategory!
 
   """북마크 설정"""
@@ -119,10 +128,18 @@ type Mutation {
 
   """[TEST] 태그 생성"""
   createTag(name: String!): Tag!
+
+  """가게와 태그 연결"""
+  connectTagWithStore(createStoreTagInput: CreateStoreTagInput!): StoreTag!
 }
 
 input CreateUserInput {
   nick: String!
   birth: String!
   gender: Boolean!
+}
+
+input CreateStoreTagInput {
+  storeId: String!
+  tagId: String!
 }

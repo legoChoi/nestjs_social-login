@@ -17,4 +17,12 @@ export class MenuService {
     });
     return menu;
   }
+
+  async fetchAll({ storeId }): Promise<Menu[]> {
+    const menu = await this.menuRepository.find({
+      where: { store: { id: storeId } },
+    });
+
+    return menu;
+  }
 }
