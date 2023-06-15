@@ -10,7 +10,7 @@ export class MenuMainCategoryService {
     private readonly menuMainCategoryRepository: Repository<MenuMainCategory>,
   ) {}
 
-  async createMenuMainCategory({
+  async connetMenuMainCategory({
     menuId,
     mainCategoryId,
   }): Promise<MenuMainCategory> {

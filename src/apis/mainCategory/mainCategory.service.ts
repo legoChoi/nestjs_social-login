@@ -10,9 +10,12 @@ export class MainCategoryService {
     private readonly menuCategoryRepository: Repository<MainCategory>,
   ) {}
 
-  async createMainCategory({ name, storeId }) {
-    await this.menuCategoryRepository.save({});
-
-    return 'name';
+  async create({ name, storeId }): Promise<MainCategory> {
+    return await this.menuCategoryRepository.save({
+      name: name,
+      store: {
+        id: storeId,
+      },
+    });
   }
 }

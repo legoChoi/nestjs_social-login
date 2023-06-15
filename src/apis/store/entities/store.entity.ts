@@ -24,7 +24,7 @@ export class Store {
   // @Field(() => String)
   // storePW: string;
 
-  @Column({})
+  @Column({ comment: '가게 이름' })
   @Field(() => String)
   name: string;
 

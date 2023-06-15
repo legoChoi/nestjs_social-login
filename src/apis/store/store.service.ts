@@ -25,7 +25,13 @@ export class StoreService {
   async fetchWithMenusAndTags({ storeId }): Promise<Store> {
     return await this.storeRepository.findOne({
       where: { id: storeId },
-      relations: ['menu', 'storeTag', 'storeTag.tag'],
+      relations: [
+        'mainCategory',
+        'mainCategory.menuMainCategory',
+        'mainCategory.menuMainCategory.menu',
+        'storeTag',
+        'storeTag.tag',
+      ],
     });
   }
 }

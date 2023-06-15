@@ -119,11 +119,11 @@ type Mutation {
 
   """[TEST] 매장 생성"""
   createStore(name: String!): String!
-  MainCategory(name: String!, storeId: String!): String!
+  createMainCategory(name: String!, storeId: String!): MainCategory!
 
   """[TEST] 메뉴 생성"""
   createMenu(name: String!, storeId: String!): Menu!
-  createMenuMainCategory(menuId: String!, mainCategoryId: String!): MenuMainCategory!
+  connectMenuMainCategory(menuId: String!, mainCategoryId: String!): MenuMainCategory!
 
   """북마크 설정"""
   createBookmark(userId: String!, storeId: String!): Bookmark!
