@@ -35,21 +35,21 @@ export class UserResolver {
   //   });
   // }
 
-  @UseGuards(GqlAuthAccessGuard) // 필터링
-  @Query(() => String)
-  fetchUser(
-    @CurrentUser() currentUser: any, //
-  ) {
-    console.log('test', currentUser);
+  // @UseGuards(GqlAuthAccessGuard) // 필터링
+  // @Query(() => String)
+  // fetchUser(
+  //   @CurrentUser() currentUser: any, //
+  // ) {
+  //   console.log('test', currentUser);
 
-    return 'test fetchUser';
-  }
+  //   return 'test fetchUser';
+  // }
 
-  @Mutation(() => User)
-  requestUserJoin(
-    @Args('socialId') socialId: string,
-    @Args('createUserInput') createUserInput: CreateUserInput, //
-  ) {
-    return this.userService.create({ socialId, createUserInput });
-  }
+  // @Mutation(() => User)
+  // requestUserJoin(
+  //   @Args('socialId') socialId: string,
+  //   @Args('createUserInput') createUserInput: CreateUserInput, //
+  // ) {
+  //   return this.userService.create({ socialId, createUserInput });
+  // }
 }

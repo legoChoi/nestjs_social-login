@@ -3,12 +3,12 @@ import { AuthGuard } from '@nestjs/passport';
 import { User } from '../user/entities/user.entity';
 import { AuthService } from './auth.service';
 
-interface IOAuthUser {
-  user: Pick<
-    User,
-    'socialId' | 'phone' | 'birth' | 'social_type' | 'isCompleted'
-  >;
-}
+// interface IOAuthUser {
+//   user: Pick<
+//     User,
+//     'socialId' | 'phone' | 'birth' | 'social_type' | 'isCompleted'
+//   >;
+// }
 
 @Controller('/login')
 export class AuthController {
@@ -16,14 +16,14 @@ export class AuthController {
     private readonly authService: AuthService, //
   ) {}
 
-  @Get('/login/kakao')
-  @UseGuards(AuthGuard('kakao'))
-  loginKaKao(
-    @Req() req: Request & IOAuthUser, //
-    @Res() res: Response,
-  ) {
-    this.authService.loginOAuth({ req, res });
-  }
+  // @Get('/login/kakao')
+  // @UseGuards(AuthGuard('kakao'))
+  // loginKaKao(
+  //   @Req() req: Request & IOAuthUser, //
+  //   @Res() res: Response,
+  // ) {
+  //   this.authService.loginOAuth({ req, res });
+  // }
 
   // @Get('/naver')
   // @UseGuards(AuthGuard('naver'))

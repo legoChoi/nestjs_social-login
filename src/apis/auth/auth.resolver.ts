@@ -20,26 +20,26 @@ export class AuthResolver {
     return this.authService.getAccessToken({ user: currentUser });
   }
 
-  @Mutation(() => String)
-  login(
-    @Args('phone') phone: string, //
-    @Args('type') type: number,
-  ) {
-    return this.authService.login({ phone, type });
-  }
+  // @Mutation(() => String)
+  // login(
+  //   @Args('phone') phone: string, //
+  //   @Args('type') type: number,
+  // ) {
+  //   return this.authService.login({ phone, type });
+  // }
 
-  /*
-    1. 소셜 회원가입 : userId로 초기화
-    2. 휴대폰 인증 : userId와 폰번, 토큰으로 검증 후 통과되면 userId에 해당하는 유저에 폰번 등록
-    3. 추가정보 입력 : 
-  */
+  // /*
+  //   1. 소셜 회원가입 : userId로 초기화
+  //   2. 휴대폰 인증 : userId와 폰번, 토큰으로 검증 후 통과되면 userId에 해당하는 유저에 폰번 등록
+  //   3. 추가정보 입력 :
+  // */
 
-  @Mutation(() => String)
-  requestSocialJoin(
-    @Args('input') input: string, //
-  ) {
-    const item = this.authService.getFromInput({ input });
+  // @Mutation(() => String)
+  // requestSocialJoin(
+  //   @Args('input') input: string, //
+  // ) {
+  //   const item = this.authService.getFromInput({ input });
 
-    return this.authService.requestSocialJoin({ item });
-  }
+  //   return this.authService.requestSocialJoin({ item });
+  // }
 }

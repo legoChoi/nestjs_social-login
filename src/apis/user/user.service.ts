@@ -10,13 +10,13 @@ export class UserService {
     private readonly userRepository: Repository<User>, //
   ) {}
 
-  async findOneById({ socialId }) {
-    return await this.userRepository.findOne({ where: { socialId } });
-  }
+  // async findOneById({ socialId }) {
+  //   return await this.userRepository.findOne({ where: { socialId } });
+  // }
 
-  async findOneByName({ userName }) {
-    return await this.userRepository.findOne({ where: { nick: userName } });
-  }
+  // async findOneByName({ userName }) {
+  //   return await this.userRepository.findOne({ where: { nick: userName } });
+  // }
 
   // async findOneByName({ userName }) {
   //   return await this.userRepository.findOne({ where: { userName } });
@@ -38,17 +38,17 @@ export class UserService {
   //   });
   // }
 
-  //
-  //
-  async social_create({ userId, userName, social_type }) {
-    return await this.userRepository.save({ userId, userName, social_type });
-  }
+  // //
+  // //
+  // async social_create({ userId, userName, social_type }) {
+  //   return await this.userRepository.save({ userId, userName, social_type });
+  // }
 
-  //
-  //
-  async create({ socialId, createUserInput }) {
-    return await this.userRepository.save({
-      socialId,
-    });
-  }
+  // //
+  // //
+  // async create({ socialId, createUserInput }) {
+  //   return await this.userRepository.save({
+  //     socialId,
+  //   });
+  // }
 }

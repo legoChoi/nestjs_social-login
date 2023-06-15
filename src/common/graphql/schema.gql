@@ -14,21 +14,10 @@ type Point {
 type User {
   id: String!
   point: [Point!]!
-  socialId: String!
   phone: String!
   nick: String!
   gender: Int!
   birth: String!
-  age: String!
-  job: String!
-  company: String!
-  mbti: String!
-  profileImgUrl: String!
-  couponCnt: Float!
-  userPoint: Float!
-  isAdult: Boolean!
-  social_type: Int!
-  isCompleted: Boolean!
 }
 
 type SmsToken {
@@ -97,7 +86,6 @@ type Bookmark {
 }
 
 type Query {
-  fetchUser: String!
   fetchSMSAuthLast(phone: String!): SmsToken!
 
   """[포인트 내역] 포인트 내역 리스트 가져오기"""
@@ -120,12 +108,8 @@ type Query {
 }
 
 type Mutation {
-  requestUserJoin(socialId: String!, createUserInput: CreateUserInput!): User!
-
   """Access Token 재발급"""
   restoreRefreshToken: String!
-  login(phone: String!, type: Float!): String!
-  requestSocialJoin(input: String!): String!
 
   """SMS 인증번호 요청"""
   requestSMSAuth(phone: String!): SmsToken!
@@ -152,12 +136,6 @@ type Mutation {
 
   """가게와 태그 연결"""
   connectTagWithStore(createStoreTagInput: CreateStoreTagInput!): StoreTag!
-}
-
-input CreateUserInput {
-  nick: String!
-  birth: String!
-  gender: Boolean!
 }
 
 input CreateStoreTagInput {
