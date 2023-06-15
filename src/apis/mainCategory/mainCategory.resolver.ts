@@ -6,10 +6,7 @@ export class MainCategoryResolver {
   constructor(private readonly menuCategoryService: MainCategoryService) {}
 
   @Mutation(() => String)
-  createMainCategory(
-    @Args('name') name: string,
-    @Args('storeId') storeId: string,
-  ) {
+  MainCategory(@Args('name') name: string, @Args('storeId') storeId: string) {
     return this.menuCategoryService.createMainCategory({ name, storeId });
   }
 }

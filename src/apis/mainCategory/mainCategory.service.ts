@@ -11,7 +11,7 @@ export class MainCategoryService {
   ) {}
 
   async createMainCategory({ name, storeId }) {
-    await this.menuCategoryRepository.save({ name, store: { id: storeId } });
+    await this.menuCategoryRepository.save({});
 
     return 'name';
   }

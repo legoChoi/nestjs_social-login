@@ -1,4 +1,5 @@
 import { Field, ObjectType } from '@nestjs/graphql';
+import { MainCategory } from 'src/apis/mainCategory/entities/mainCategory.entity';
 import { Menu } from 'src/apis/menu/entities/menu.entity';
 import { StoreImage } from 'src/apis/storeImage/entities/storeImage.entity';
 import { StoreTag } from 'src/apis/storeTag/entities/storeTag.entity';
@@ -30,6 +31,10 @@ export class Store {
   @OneToMany(() => Menu, (menu) => menu.store)
   @Field(() => [Menu])
   menu: Menu[];
+
+  @OneToMany(() => MainCategory, (mainCategory) => mainCategory.store)
+  @Field(() => [MainCategory])
+  mainCategory: MainCategory[];
 
   @OneToMany(() => StoreTag, (storeTag) => storeTag.store)
   @Field(() => [StoreTag])

@@ -1,9 +1,11 @@
 import { Field, ObjectType } from '@nestjs/graphql';
+import { MenuMainCategory } from 'src/apis/menuMainCategory/entities/menuMainCategory.entity';
 import { Store } from 'src/apis/store/entities/store.entity';
 import {
   Column,
   Entity,
   ManyToOne,
+  OneToMany,
   PrimaryGeneratedColumn,
   RelationId,
 } from 'typeorm';
@@ -14,6 +16,13 @@ export class Menu {
   @PrimaryGeneratedColumn({ comment: '메뉴 ID' })
   @Field(() => String)
   id: string;
+
+  @OneToMany(
+    () => MenuMainCategory,
+    (menuMainCategory) => menuMainCategory.menu,
+  )
+  @Field(() => [MenuMainCategory])
+  menuMainCategory: MenuMainCategory[];
 
   @ManyToOne(() => Store, (store) => store.menu)
   @Field(() => Store)

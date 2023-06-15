@@ -46,6 +46,20 @@ type Point {
 
 type Menu {
   id: String!
+  menuMainCategory: [MenuMainCategory!]!
+  store: Store!
+  name: String!
+}
+
+type MenuMainCategory {
+  id: String!
+  menu: Menu!
+  mainCategory: MainCategory!
+}
+
+type MainCategory {
+  id: String!
+  menuMainCategory: [MenuMainCategory!]!
   store: Store!
   name: String!
 }
@@ -70,6 +84,7 @@ type Store {
   id: String!
   name: String!
   menu: [Menu!]!
+  mainCategory: [MainCategory!]!
   storeTag: [StoreTag!]!
   storeImage: [StoreImage!]!
 }
@@ -78,18 +93,6 @@ type Bookmark {
   id: String!
   store: Store!
   user: User!
-}
-
-type MainCategory {
-  id: String!
-  store: Store!
-  name: String!
-}
-
-type MenuMainCategory {
-  id: String!
-  menu: Menu!
-  mainCategory: MainCategory!
 }
 
 type Query {
@@ -131,7 +134,7 @@ type Mutation {
 
   """[TEST] 매장 생성"""
   createStore(name: String!): String!
-  createMainCategory(name: String!, storeId: String!): String!
+  MainCategory(name: String!, storeId: String!): String!
 
   """[TEST] 메뉴 생성"""
   createMenu(name: String!, storeId: String!): Menu!
