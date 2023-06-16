@@ -17,4 +17,7 @@ export class MenuMainCategory {
   @ManyToOne(() => MainCategory)
   @Field(() => MainCategory)
   mainCategory: MainCategory;
+
+  @Column({ comment: '카테고리 내 메뉴 순서' })
+  order: number;
 }
