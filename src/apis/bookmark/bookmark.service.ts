@@ -33,7 +33,7 @@ export class BookmarkService {
   //
   async fetchAll({ userId }): Promise<Bookmark[]> {
     const bookmark = await this.bookmarkRepository.find({
-      where: { user: userId },
+      where: { user: { id: userId } },
       relations: ['store'],
     });
 

@@ -1,4 +1,4 @@
-import { ConflictException, Injectable, Query } from '@nestjs/common';
+import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { User } from './entities/user.entity';
@@ -9,6 +9,10 @@ export class UserService {
     @InjectRepository(User)
     private readonly userRepository: Repository<User>, //
   ) {}
+
+  async create({ phone, nick, gender, birth }) {
+    return await this.userRepository.save({ phone, nick, gender, birth });
+  }
 
   // async findOneById({ socialId }) {
   //   return await this.userRepository.findOne({ where: { socialId } });

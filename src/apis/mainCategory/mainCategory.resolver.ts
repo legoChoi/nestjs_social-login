@@ -10,7 +10,15 @@ export class MainCategoryResolver {
   createMainCategory(
     @Args('name') name: string,
     @Args('storeId') storeId: string,
-  ): Promise<MainCategory> { //
+  ): Promise<MainCategory> {
+    //
     return this.menuCategoryService.create({ name, storeId });
+  }
+
+  @Query(() => [MainCategory])
+  fetchAllCategoryAndMenu(
+    @Args('storeId') storeId: string, //
+  ): Promise<MainCategory[]> {
+    return this.menuCategoryService.fetchAll({ storeId });
   }
 }

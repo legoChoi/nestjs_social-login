@@ -1,4 +1,5 @@
 import { Field, ObjectType } from '@nestjs/graphql';
+import { Bookmark } from 'src/apis/bookmark/entities/bookmark.entity';
 import { MainCategory } from 'src/apis/mainCategory/entities/mainCategory.entity';
 import { Menu } from 'src/apis/menu/entities/menu.entity';
 import { StoreImage } from 'src/apis/storeImage/entities/storeImage.entity';
@@ -43,6 +44,10 @@ export class Store {
   @OneToMany(() => StoreImage, (storeImage) => storeImage.store)
   @Field(() => [StoreImage])
   storeImage: StoreImage[];
+
+  @OneToMany(() => Bookmark, (Bookmark) => Bookmark.user)
+  @Field(() => [Bookmark])
+  bookmark: Bookmark[];
 
   // @Column({})
   // @Field(() => String)

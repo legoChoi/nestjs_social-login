@@ -9,6 +9,7 @@ export class StoreResolver {
   ) {}
 
   //
+  //
   @Mutation(
     () => String, //
     { description: '[TEST] 매장 생성' },
@@ -31,7 +32,8 @@ export class StoreResolver {
   }
 
   //
-  // 매장 상세 화면
+  // 매장 상세 (상단)
+  // 가게 사진, 태그, 이름, 위치, 별점, 찜(유저가 선택했는지 안했는지)
   // 호출 시 메뉴까지 불러오게?
   @Query(
     () => Store, //
@@ -42,4 +44,9 @@ export class StoreResolver {
   ): Promise<Store> {
     return this.storeService.fetchWithMenusAndTags({ storeId });
   }
+
+  //
+  // 매장 상세 (메뉴 탭)
+  // 메뉴 불러오기
+  // 카테고리, 메뉴id, 메뉴 사진, 메뉴 이름, 메뉴 원 가격, 메뉴 할인율, 메뉴 할인 가격, 메뉴 재고
 }

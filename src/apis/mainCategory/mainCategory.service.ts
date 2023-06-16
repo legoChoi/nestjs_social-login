@@ -18,4 +18,12 @@ export class MainCategoryService {
       },
     });
   }
+  n;
+
+  async fetchAll({ storeId }): Promise<MainCategory[]> {
+    return await this.menuCategoryRepository.find({
+      where: { store: { id: storeId } },
+      relations: ['menuMainCategory', 'menuMainCategory.menu'],
+    });
+  }
 }

@@ -2,38 +2,6 @@
 # THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
 # ------------------------------------------------------
 
-type Point {
-  id: String!
-  user: User!
-  by: String!
-  type: Int!
-  value: Int!
-  remainPoint: Int!
-}
-
-type User {
-  id: String!
-  point: [Point!]!
-  phone: String!
-  nick: String!
-  gender: Int!
-  birth: String!
-}
-
-type SmsToken {
-  id: String!
-  phone: String!
-  token: String!
-  isAuth: Boolean!
-  isValid: Boolean!
-  createdAt: DateTime!
-}
-
-"""
-A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format.
-"""
-scalar DateTime
-
 type Menu {
   id: String!
   menuMainCategory: [MenuMainCategory!]!
@@ -77,6 +45,7 @@ type Store {
   mainCategory: [MainCategory!]!
   storeTag: [StoreTag!]!
   storeImage: [StoreImage!]!
+  bookmark: [Bookmark!]!
 }
 
 type Bookmark {
@@ -85,17 +54,51 @@ type Bookmark {
   user: User!
 }
 
+type Point {
+  id: String!
+  user: User!
+  by: String!
+  type: Int!
+  value: Int!
+  remainPoint: Int!
+}
+
+type User {
+  id: String!
+  point: [Point!]!
+  bookmark: [Bookmark!]!
+  phone: String!
+  nick: String!
+  gender: Boolean!
+  birth: String!
+}
+
+type SmsToken {
+  id: String!
+  phone: String!
+  token: String!
+  isAuth: Boolean!
+  isValid: Boolean!
+  createdAt: DateTime!
+}
+
+"""
+A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format.
+"""
+scalar DateTime
+
 type Query {
   fetchSMSAuthLast(phone: String!): SmsToken!
 
   """[포인트 내역] 포인트 내역 리스트 가져오기"""
-  fetchAllPoint(userId: String!): [Point!]!
+  fetchAllUserPoint(userId: String!): [Point!]!
 
   """[매장 리스트] 매장 리스트 가져오기"""
   fetchStoreList: [Store!]!
 
   """[매장 상세] 매장 상세 가져오기"""
   fetchOneStoreById(storeId: String!): Store!
+  fetchAllCategoryAndMenu(storeId: String!): [MainCategory!]!
 
   """[매장 상세 - 메뉴 탭] 메뉴 리스트 가져오기"""
   fetchAllMenu(storeId: String!): [Menu!]!
@@ -108,6 +111,9 @@ type Query {
 }
 
 type Mutation {
+  """[TEST] 회원 가입"""
+  createUser(phone: String!, nick: String!, gender: Boolean!, birth: String!): User!
+
   """Access Token 재발급"""
   restoreRefreshToken: String!
 
@@ -116,6 +122,9 @@ type Mutation {
 
   """SMS 인증번호 검증"""
   responseSMSAuth(phone: String!, token: String!, userId: String!): SmsToken!
+
+  """[결제 화면] 포인트 지급"""
+  createPointForUser(userId: String!, by: String!, value: Float!): Point!
 
   """[TEST] 매장 생성"""
   createStore(name: String!): String!

@@ -1,4 +1,5 @@
 import { Field, Int, ObjectType } from '@nestjs/graphql';
+import { Bookmark } from 'src/apis/bookmark/entities/bookmark.entity';
 import { Point } from 'src/apis/point/entities/point.entity';
 import {
   Column,
@@ -18,9 +19,17 @@ export class User {
   @Field(() => String)
   id: string;
 
+  //
+  //
   @OneToMany(() => Point, (point) => point.user)
   @Field(() => [Point])
   point: Point[];
+
+  //
+  //
+  @OneToMany(() => Bookmark, (bookmark) => bookmark.user)
+  @Field(() => [Bookmark])
+  bookmark: Bookmark[];
 
   // // 없애도 될 것 같다.
   // @Column({ comment: '회원 ID' })
@@ -44,8 +53,8 @@ export class User {
     comment: '회원 성별 0 남 / 1 여',
     default: 0,
   })
-  @Field(() => Int)
-  gender: number;
+  @Field(() => Boolean)
+  gender: boolean;
 
   // 추가 정보 입력 화면에서 받는 데이터
   @Column({ comment: '회원 생일' })

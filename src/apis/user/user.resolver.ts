@@ -52,4 +52,14 @@ export class UserResolver {
   // ) {
   //   return this.userService.create({ socialId, createUserInput });
   // }
+
+  @Mutation(() => User, { description: '[TEST] 회원 가입' })
+  createUser(
+    @Args('phone') phone: string,
+    @Args('nick') nick: string,
+    @Args('gender') gender: boolean,
+    @Args('birth') birth: string,
+  ): Promise<User> {
+    return this.userService.create({ phone, nick, gender, birth });
+  }
 }
