@@ -36,8 +36,8 @@ export class MainCategory {
   // @Column({ comment: '주 카테고리 설명' })
   // description: string;
 
-  // @Column({ comment: '주 카테고리 순서' })
-  // order: number;
+  @Column({ comment: '주 카테고리 순서' })
+  order: number;
 
   // @Column({ comment: '주 카테고리 메뉴 수' })
   // menuCount: number;

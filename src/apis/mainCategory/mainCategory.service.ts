@@ -23,6 +23,12 @@ export class MainCategoryService {
   async fetchAll({ storeId }): Promise<MainCategory[]> {
     return await this.menuCategoryRepository.find({
       where: { store: { id: storeId } },
+      order: {
+        order: 'ASC',
+        menuMainCategory: {
+          order: 'ASC',
+        },
+      },
       relations: ['menuMainCategory', 'menuMainCategory.menu'],
     });
   }

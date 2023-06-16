@@ -23,4 +23,8 @@ export class StoreTag {
   @ManyToOne(() => Tag, (tag) => tag.storeTag)
   @Field(() => Tag)
   tag: Tag;
+
+  @Column({ comment: '태그 명' })
+  @Field(() => String)
+  tagName: string;
 }

@@ -39,14 +39,9 @@ export class StoreResolver {
     () => Store, //
     { description: '[매장 상세] 매장 상세 가져오기' },
   )
-  fetchOneStoreById(
+  fetchOneStoreByStoreId(
     @Args('storeId') storeId: string, //
   ): Promise<Store> {
     return this.storeService.fetchWithMenusAndTags({ storeId });
   }
-
-  //
-  // 매장 상세 (메뉴 탭)
-  // 메뉴 불러오기
-  // 카테고리, 메뉴id, 메뉴 사진, 메뉴 이름, 메뉴 원 가격, 메뉴 할인율, 메뉴 할인 가격, 메뉴 재고
 }

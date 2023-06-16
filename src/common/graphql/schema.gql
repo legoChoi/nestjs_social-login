@@ -36,6 +36,7 @@ type StoreTag {
   id: String!
   store: Store!
   tag: Tag!
+  tagName: String!
 }
 
 type Store {
@@ -97,7 +98,7 @@ type Query {
   fetchStoreList: [Store!]!
 
   """[매장 상세] 매장 상세 가져오기"""
-  fetchOneStoreById(storeId: String!): Store!
+  fetchOneStoreByStoreId(storeId: String!): Store!
   fetchAllCategoryAndMenu(storeId: String!): [MainCategory!]!
 
   """[매장 상세 - 메뉴 탭] 메뉴 리스트 가져오기"""

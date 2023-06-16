@@ -35,4 +35,8 @@ export class StoreService {
       ],
     });
   }
+
+  async fetchOneForDetail({ storeId }): Promise<Store> {
+    return this.storeRepository.findOne({ where: { id: storeId } });
+  }
 }
