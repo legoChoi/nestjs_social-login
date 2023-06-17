@@ -1,6 +1,7 @@
 import { Field, Int, ObjectType } from '@nestjs/graphql';
 import { Bookmark } from 'src/apis/bookmark/entities/bookmark.entity';
 import { Point } from 'src/apis/point/entities/point.entity';
+import { UserPosition } from 'src/apis/userPosition/entities/userPosition.entity';
 import {
   Column,
   CreateDateColumn,
@@ -30,6 +31,11 @@ export class User {
   @OneToMany(() => Bookmark, (bookmark) => bookmark.user)
   @Field(() => [Bookmark])
   bookmark: Bookmark[];
+
+  //
+  @OneToMany(() => UserPosition, (userPosition) => userPosition.user)
+  @Field(() => [UserPosition])
+  userPosition: UserPosition[];
 
   // // 없애도 될 것 같다.
   // @Column({ comment: '회원 ID' })

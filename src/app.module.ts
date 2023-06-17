@@ -15,6 +15,7 @@ import { MenuModule } from './apis/menu/menu.module';
 import { MenuMainCategoryModule } from './apis/menuMainCategory/menuMainCategory.module';
 import { TagModule } from './apis/tag/tag.module';
 import { StoreTagModule } from './apis/storeTag/storeTag.module';
+import { UserPositionModule } from './apis/userPosition/userPosition.module';
 
 @Module({
   imports: [
@@ -30,6 +31,7 @@ import { StoreTagModule } from './apis/storeTag/storeTag.module';
     ReviewModule,
     TagModule,
     StoreTagModule,
+    UserPositionModule,
     GraphQLModule.forRoot<ApolloDriverConfig>({
       driver: ApolloDriver,
       autoSchemaFile: 'src/common/graphql/schema.gql',

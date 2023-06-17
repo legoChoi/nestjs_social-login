@@ -64,10 +64,19 @@ type Point {
   remainPoint: Int!
 }
 
+type UserPosition {
+  id: String!
+  lat: Float!
+  lng: Float!
+  isSelected: Boolean!
+  user: User!
+}
+
 type User {
   id: String!
   point: [Point!]!
   bookmark: [Bookmark!]!
+  userPosition: [UserPosition!]!
   phone: String!
   nick: String!
   gender: Boolean!
@@ -146,6 +155,7 @@ type Mutation {
 
   """가게와 태그 연결"""
   connectTagWithStore(createStoreTagInput: CreateStoreTagInput!): StoreTag!
+  createUserPosition(userId: String!, lat: String!, lng: String!): UserPosition!
 }
 
 input CreateStoreTagInput {
