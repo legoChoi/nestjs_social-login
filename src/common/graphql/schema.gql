@@ -22,6 +22,18 @@ type MainCategory {
   name: String!
 }
 
+type UserStoreCoupon {
+  id: String!
+  storeCoupon: StoreCoupon!
+  user: User!
+}
+
+type StoreCoupon {
+  id: String!
+  userStoreCoupon: [UserStoreCoupon!]!
+  store: Store!
+}
+
 type StoreImage {
   id: String!
   url: String!
@@ -47,6 +59,7 @@ type Store {
   storeTag: [StoreTag!]!
   storeImage: [StoreImage!]!
   bookmark: [Bookmark!]!
+  storeCoupon: [StoreCoupon!]!
 }
 
 type Bookmark {
@@ -77,6 +90,7 @@ type User {
   point: [Point!]!
   bookmark: [Bookmark!]!
   userPosition: [UserPosition!]!
+  userStoreCoupon: [UserStoreCoupon!]!
   phone: String!
   nick: String!
   gender: Boolean!

@@ -2,6 +2,7 @@ import { Field, Int, ObjectType } from '@nestjs/graphql';
 import { Bookmark } from 'src/apis/bookmark/entities/bookmark.entity';
 import { Point } from 'src/apis/point/entities/point.entity';
 import { UserPosition } from 'src/apis/userPosition/entities/userPosition.entity';
+import { UserStoreCoupon } from 'src/apis/userStoreCoupon/entities/userStoreCoupon.entity';
 import {
   Column,
   CreateDateColumn,
@@ -36,6 +37,10 @@ export class User {
   @OneToMany(() => UserPosition, (userPosition) => userPosition.user)
   @Field(() => [UserPosition])
   userPosition: UserPosition[];
+
+  @OneToMany(() => UserStoreCoupon, (userStoreCoupon) => userStoreCoupon.user)
+  @Field(() => [UserStoreCoupon])
+  userStoreCoupon: UserStoreCoupon[];
 
   // // 없애도 될 것 같다.
   // @Column({ comment: '회원 ID' })
