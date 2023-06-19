@@ -5,7 +5,7 @@ import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
 @Entity()
 @ObjectType()
 export class StoreImage {
-  @PrimaryGeneratedColumn()
+  @PrimaryGeneratedColumn({ comment: '가게 이미지 ID' })
   @Field(() => String)
   id: string;
 
