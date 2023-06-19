@@ -1,5 +1,6 @@
 import { Field, ObjectType } from '@nestjs/graphql';
-import { Entity, PrimaryGeneratedColumn } from 'typeorm';
+import { MenuOptionCategory } from 'src/apis/menuOptionCategory/entities/menuOptionCategory.entity';
+import { Entity, ManyToOne, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
 
 @Entity()
 @ObjectType()
@@ -7,4 +8,11 @@ export class MenuOption {
   @PrimaryGeneratedColumn()
   @Field(() => String)
   id: string;
+
+  @ManyToOne(
+    () => MenuOptionCategory,
+    (menuOptionCategory) => menuOptionCategory.menuOption,
+  )
+  @Field(() => MenuOptionCategory)
+  menuOptionCategory: MenuOptionCategory;
 }

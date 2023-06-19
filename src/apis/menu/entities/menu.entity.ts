@@ -1,5 +1,6 @@
 import { Field, ObjectType } from '@nestjs/graphql';
 import { MenuMainCategory } from 'src/apis/menuMainCategory/entities/menuMainCategory.entity';
+import { MenuOptionCategory } from 'src/apis/menuOptionCategory/entities/menuOptionCategory.entity';
 import { Store } from 'src/apis/store/entities/store.entity';
 import {
   Column,
@@ -23,6 +24,13 @@ export class Menu {
   )
   @Field(() => [MenuMainCategory])
   menuMainCategory: MenuMainCategory[];
+
+  @OneToMany(
+    () => MenuOptionCategory,
+    (menuOptionCategory) => menuOptionCategory.menu,
+  )
+  @Field(() => [MenuOptionCategory])
+  menuOptionCategory: MenuOptionCategory[];
 
   @ManyToOne(() => Store, (store) => store.menu)
   @Field(() => Store)

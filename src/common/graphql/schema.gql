@@ -2,9 +2,21 @@
 # THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
 # ------------------------------------------------------
 
+type MenuOption {
+  id: String!
+  menuOptionCategory: MenuOptionCategory!
+}
+
+type MenuOptionCategory {
+  id: String!
+  menu: Menu!
+  menuOption: [MenuOption!]!
+}
+
 type Menu {
   id: String!
   menuMainCategory: [MenuMainCategory!]!
+  menuOptionCategory: [MenuOptionCategory!]!
   store: Store!
   name: String!
 }
