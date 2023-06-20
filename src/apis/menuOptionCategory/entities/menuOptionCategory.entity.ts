@@ -6,7 +6,7 @@ import { Entity, ManyToOne, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
 @Entity()
 @ObjectType()
 export class MenuOptionCategory {
-  @PrimaryGeneratedColumn()
+  @PrimaryGeneratedColumn({ comment: '메뉴 옵션 카테고리 ID' })
   @Field(() => String)
   id: string;
 

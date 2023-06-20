@@ -6,7 +6,7 @@ import { Entity, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
 @Entity()
 @ObjectType()
 export class UserStoreCoupon {
-  @PrimaryGeneratedColumn()
+  @PrimaryGeneratedColumn({ comment: '유저 가게 쿠폰 ID' })
   @Field(() => String)
   id: string;
 

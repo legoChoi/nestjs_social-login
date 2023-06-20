@@ -34,4 +34,12 @@ export class BookmarkResolver {
   ): Promise<Bookmark[]> {
     return this.bookmarkService.fetchAll({ userId });
   }
+
+  @Query(() => Boolean, { description: '유저 북마크 검사' })
+  checkBookmarkByUserId(
+    @Args('userId') userId: string,
+    @Args('storeId') storeId: string,
+  ) {
+    return this.bookmarkService.checkBookmarking({ userId, storeId });
+  }
 }

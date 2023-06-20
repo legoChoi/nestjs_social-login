@@ -144,6 +144,9 @@ type Query {
 
   """북마크 가게 모두 가져오기"""
   fetchAllBookmark(userId: String!): [Bookmark!]!
+
+  """유저 북마크 검사"""
+  checkBookmarkByUserId(userId: String!, storeId: String!): Boolean!
 }
 
 type Mutation {
@@ -164,6 +167,12 @@ type Mutation {
 
   """[TEST] 매장 생성"""
   createStore(name: String!): String!
+
+  """[TEST] 가게 HARD DELETE"""
+  hardDeleteStore(storeId: String!): Boolean!
+
+  """[TEST] 가게 SOFT DELETE"""
+  softDeleteStore(storeId: String!): Boolean!
   createMainCategory(name: String!, storeId: String!): MainCategory!
 
   """[TEST] 메뉴 생성"""

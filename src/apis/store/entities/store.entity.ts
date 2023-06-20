@@ -116,6 +116,6 @@ export class Store {
   // @UpdateDateColumn()
   // updatedAt: Date;
 
-  // @DeleteDateColumn()
-  // deletedAt: Date;
+  @DeleteDateColumn()
+  deletedAt: Date;
 }

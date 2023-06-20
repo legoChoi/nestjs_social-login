@@ -11,7 +11,7 @@ import {
 @Entity()
 @ObjectType()
 export class UserPosition {
-  @PrimaryGeneratedColumn()
+  @PrimaryGeneratedColumn({ comment: '유저 위치 ID' })
   @Field(() => String)
   id: string;
 

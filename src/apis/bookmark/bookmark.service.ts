@@ -32,11 +32,27 @@ export class BookmarkService {
 
   //
   async fetchAll({ userId }): Promise<Bookmark[]> {
-    const bookmark = await this.bookmarkRepository.find({
-      where: { user: { id: userId } },
-      relations: ['store'],
-    });
+    const bm = await this.bookmarkRepository
+      .createQueryBuilder('bookmark')
+      .leftJoinAndSelect('bookmark.store', 'store')
+      .where('userId = :userId', { userId })
+      .getMany();
 
-    return bookmark;
+    console.log(bm);
+
+    return bm;
+  }
+
+  async checkBookmarking({ userId, storeId }): Promise<Boolean> {
+    const data = await this.bookmarkRepository
+      .createQueryBuilder('bookmark')
+      .select()
+      .where('userId = :userId', { userId })
+      .andWhere('storeId = :storeId', { storeId })
+      .getRawOne();
+
+    if (data) return true;
+
+    return false;
   }
 }

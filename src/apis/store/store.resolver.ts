@@ -44,4 +44,18 @@ export class StoreResolver {
   ): Promise<Store> {
     return this.storeService.fetchWithMenusAndTags({ storeId });
   }
+
+  @Mutation(() => Boolean, { description: '[TEST] 가게 HARD DELETE' })
+  hardDeleteStore(
+    @Args('storeId') storeId: string, //
+  ): Promise<Boolean> {
+    return this.storeService.hardDelete({ storeId });
+  }
+
+  @Mutation(() => Boolean, { description: '[TEST] 가게 SOFT DELETE' })
+  softDeleteStore(
+    @Args('storeId') storeId: string, //
+  ): Promise<Boolean> {
+    return this.storeService.softDelete({ storeId });
+  }
 }

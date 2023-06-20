@@ -39,4 +39,14 @@ export class StoreService {
   async fetchOneForDetail({ storeId }): Promise<Store> {
     return this.storeRepository.findOne({ where: { id: storeId } });
   }
+
+  async hardDelete({ storeId }): Promise<Boolean> {
+    const data = await this.storeRepository.delete({ id: storeId });
+    return data.affected ? true : false;
+  }
+
+  async softDelete({ storeId }): Promise<Boolean> {
+    const data = await this.storeRepository.softDelete({ id: storeId });
+    return data.affected ? true : false;
+  }
 }
